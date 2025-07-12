@@ -1,1 +1,1 @@
-# odoo
+ReWear – Community Clothing Exchange
