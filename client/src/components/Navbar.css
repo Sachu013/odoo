@@ -1,0 +1,29 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  padding: 1rem 2rem;
+}
+.navbar-logo a {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.navbar-links a, .logout-btn {
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.logout-btn:hover, .navbar-links a:hover {
+  color: #4caf50;
+}

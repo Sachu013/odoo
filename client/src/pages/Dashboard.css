@@ -1,0 +1,11 @@
+.dashboard-container {
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #e9ecef;
+  color: #222;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}

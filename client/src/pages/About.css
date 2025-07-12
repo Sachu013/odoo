@@ -1,0 +1,11 @@
+.about-container {
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #222;
+}
+
+.about-header {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}

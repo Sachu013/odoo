@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
+import { useNavigate } from "react-router-dom";
+import './Signup.css';
 
 function Signup() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -11,41 +15,36 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/auth/register", // <-- FULL URL
-        form,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const res = await api.post("/auth/register", form);
       setMessage(res.data.message);
+      // Redirect to login after successful signup
+      setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
-      setMessage(
-        err.response?.data?.message ||
-        err.message ||
-        "Registration failed"
-      );
-      console.error("Registration error:", err);
+      setError(err.response?.data?.message || "Registration failed");
     }
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="signup-container">
+      <h2>Sign Up</h2>
+      <form onSubmit={handleSubmit} className="auth-form">
         <input
           name="name"
           placeholder="Name"
           value={form.name}
           onChange={handleChange}
           required
-        /><br />
+        />
         <input
           name="email"
+          type="email"
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
           required
-        /><br />
+        />
         <input
           name="password"
           type="password"
@@ -53,10 +52,11 @@ function Signup() {
           value={form.password}
           onChange={handleChange}
           required
-        /><br />
+        />
         <button type="submit">Register</button>
       </form>
-      <p>{message}</p>
+      {error && <p className="auth-error">{error}</p>}
+      {message && <p className="auth-message">{message}</p>}
     </div>
   );
 }

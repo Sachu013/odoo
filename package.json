@@ -1,0 +1,19 @@
+{
+  "name": "rewear-project",
+  "version": "1.0.0",
+  "description": "Fullstack ReWear project with React frontend and Express backend",
+  "main": "index.js",
+  "scripts": {
+  "start": "npm run dev",
+  "start:frontend": "npm start --prefix client",
+  "start:backend": "node backend/server.js",
+  "dev": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
+},
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^8.2.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.17.0"
+  }
+}
